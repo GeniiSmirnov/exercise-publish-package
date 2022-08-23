@@ -11,14 +11,14 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      REGISTRY: ghcr.io/${{ github.actor }}/alpine_image
+      REGISTRY: ghcr.io/$GITHUB_REPOSITORY_OWNER/alpine_image
       TAG: ${{ github.run_id }}
     
     steps:
     - uses: actions/checkout@v3
     
     - name: Log into GitHub Container Registry
-      run: echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo ${{ secrets.PAT }} | docker login ghcr.io -u $GITHUB_REPOSITORY_OWNER --password-stdin
     
     - name: Build the Docker image
       run: docker build . -f sample-packages/docker/Dockerfile --tag $REGISTRY:$TAG
