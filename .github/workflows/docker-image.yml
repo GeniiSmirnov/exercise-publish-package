@@ -11,7 +11,7 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      REGISTRY: ghcr.io/$GITHUB_REPOSITORY_OWNER/alpine_image
+      REGISTRY: ghcr.io/${{ github.repository_owner }}/alpine_image
       TAG: ${{ github.run_id }}
     
     steps:
